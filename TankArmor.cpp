@@ -1,3 +1,7 @@
+// Copyright Drobyshev Danila 2022. Source code distributed under license GPLv3
+
+
+
 float ATankPawn::GetArmorInPoint(FVector StartLocation,FVector EndLocation,FRotator Rotation)
 {
 	FHitResult HitResult;
