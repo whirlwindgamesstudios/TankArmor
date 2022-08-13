@@ -104,7 +104,7 @@ bool ATankPawn::FindCollisionUVFromHit(const FHitResult& Hit, FVector2D& UV)
         FVector Pos0 = AllVertices[0].Position,Pos1,Pos2;
     	FVector2D UV0=AllVertices[0].UVs,UV1,UV2;
     	
-    	for (int i=0;i<=AllVertices.Num()-7;i++)
+    	for (int i=0;i<=AllVertices.Num()-4;i++)
     	{
     		if(AllVertices[i+3].Position!=Pos0)
     		{
@@ -112,6 +112,10 @@ bool ATankPawn::FindCollisionUVFromHit(const FHitResult& Hit, FVector2D& UV)
     			UV1 = AllVertices[i+3].UVs;
     			break;
     		}
+    		
+    	}
+    	for (int i=0;i<=AllVertices.Num()-7;i++)
+    	{
     		if(AllVertices[i+6].Position!=Pos0&&AllVertices[i+6].Position!=Pos1)
     		{
     			Pos2=AllVertices[i+6].Position;
@@ -119,7 +123,6 @@ bool ATankPawn::FindCollisionUVFromHit(const FHitResult& Hit, FVector2D& UV)
     			break;
     		}
     	}
-    	
         FVector BaryCoords = FMath::ComputeBaryCentric2D(LocalHitPos, Pos0, Pos1, Pos2);
 
         UV = (BaryCoords.X * UV0) + (BaryCoords.Y * UV1) + (BaryCoords.Z * UV2);
